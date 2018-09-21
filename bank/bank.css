@@ -1,0 +1,38 @@
+.bank {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    min-width: 50%;
+    min-height: 20%;
+    display: none;
+}
+
+.bank--open {
+    display: block;
+}
+
+.bank__wrapper {
+    position: relative;
+}
+
+.bank__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.bank__items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bank__items-slot {
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+    border: 1px solid black;
+}

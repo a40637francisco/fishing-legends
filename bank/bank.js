@@ -4,11 +4,18 @@ const bank = [
     { id: 3, quantity: 40 },
 ]
 
+
+function addMultipleItemsToBank(items) {
+    items.forEach((item) => {
+        addToBank(item)
+    })
+    return true
+}
+
 /* 
  *   item extends Item: {
  *       id: number,;
  *       quantity: number;
- *
  *   }
  */
 function addToBank(item) {
@@ -21,6 +28,7 @@ function addToBank(item) {
         }
     }
     bank.push(item)
+    return true
 }
 
 function addToStack(itemStacks, item, itemTemplate) {
@@ -28,6 +36,7 @@ function addToStack(itemStacks, item, itemTemplate) {
         const currentQuantity = itemStacks[i].quantity
         if (currentQuantity === itemTemplate.maxStack) { continue; }
         itemStacks[i].quantity = currentQuantity + item.quantity;
-        return;
+        return true;
     }
+    return false
 }
