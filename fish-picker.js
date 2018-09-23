@@ -1,7 +1,4 @@
 
-
-
-
 function getfish(fishes) {
     let total = 0;
     for (let i = 0; i < fishes.length; ++i) {
@@ -19,7 +16,7 @@ function getfish(fishes) {
 
 const XP = 0
 
-let catchSpeed = 30
+let catchSpeed = 1000
 
 const fishes = [
     { id: 1, name: 'Tuna', chance: 2 },
@@ -29,17 +26,17 @@ const fishes = [
 
 var catches = {}
 
-const missFish = { name: 'Didn`t catch', chance: 1 }
+const missFish = { id: -1, name: 'Didn`t catch', chance: 1 }
 fishes.push(missFish)
 
-const chest = { name: 'Chest', chance: .03 }
+const chest = { id: 99, name: 'Chest', chance: .03 }
 fishes.push(chest)
 
 setInterval(() => {
     if (Object.keys(blockFishing).length === 0) {
         const fish = getfish(fishes);
         // console.log(fish);
-        catches[fish.name] = catches[fish.name] ? catches[fish.name] + 1 : 1;
-        document.getElementById(fish.name).innerHTML = catches[fish.name];
+        catches[fish.id] = catches[fish.id] ? catches[fish.id] + 1 : 1;
+        document.getElementById(fish.name).innerHTML = catches[fish.id];
     }
 }, catchSpeed)

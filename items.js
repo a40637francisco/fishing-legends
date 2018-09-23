@@ -17,6 +17,7 @@ const items = [
     { id: 1, name: 'Tuna', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH },
     { id: 2, name: 'Salmon', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH },
     { id: 3, name: 'Lobster', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH },
+    { id: 99, name: 'Chest', canStack: false, maxStack: 1, category: ITEM_CATEGORY.TREASURE },
 ]
 
 function getItemById(id) {
