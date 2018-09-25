@@ -1,4 +1,43 @@
 
+
+let fishingInterval = null
+
+var catches = {}
+
+function startFishingLoop(zone, cb = () => { }) {
+
+    const catchSpeed = zone.catchSpeed; // calcular
+    let possibleCatches = zone.fishes;
+
+    // SET MISS CHANCE
+    const missChance = zone.missChance || 1 // also get multipliers from player equipment
+    possibleCatches.push({ id: -1, name: 'Didn`t catch', chance: missChance })
+
+    // SET TREASURE CHANCE
+    possibleCatches = possibleCatches.concat(zone.treasures)
+
+    fishingInterval = setInterval(() => {
+        if (Object.keys(blockFishing).length === 0) {
+            const fish = getfish(possibleCatches)
+            const fishItem = getItemById(fish.id)
+
+            if (!fishItem) {
+                catches[fish.id] = catches[fish.id] ? catches[fish.id] + 1 : 1
+                document.getElementById('Didn`t catch').innerHTML = catches[fish.id]
+            } else {
+                catches[fish.id] = catches[fish.id] ? catches[fish.id] + 1 : 1
+                cb(fishItem)
+                document.getElementById(fishItem.name).innerHTML = catches[fish.id]
+            }
+        }
+    }, catchSpeed)
+}
+
+function stopFishingLoop() {
+    clearInterval(fishingInterval)
+    fishingInterval = null
+}
+
 function getfish(fishes) {
     let total = 0;
     for (let i = 0; i < fishes.length; ++i) {
@@ -13,30 +52,3 @@ function getfish(fishes) {
         rand -= fish.chance;
     }
 }
-
-const XP = 0
-
-let catchSpeed = 1000
-
-const fishes = [
-    { id: 1, name: 'Tuna', chance: 2 },
-    { id: 2, name: 'Salmon', chance: 3 },
-    { id: 3, name: 'Lobster', chance: 2 },
-];
-
-var catches = {}
-
-const missFish = { id: -1, name: 'Didn`t catch', chance: 1 }
-fishes.push(missFish)
-
-const chest = { id: 99, name: 'Chest', chance: .03 }
-fishes.push(chest)
-
-setInterval(() => {
-    if (Object.keys(blockFishing).length === 0) {
-        const fish = getfish(fishes);
-        // console.log(fish);
-        catches[fish.id] = catches[fish.id] ? catches[fish.id] + 1 : 1;
-        document.getElementById(fish.name).innerHTML = catches[fish.id];
-    }
-}, catchSpeed)

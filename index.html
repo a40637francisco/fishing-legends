@@ -21,22 +21,27 @@
         <div class="bank__wrapper">
             <div class="bank__close" onclick="closeBank()">X</div>
             <div class="bank__items">
-
             </div>
         </div>
     </div>
-
-    <button onclick="openBank()">OPEN BANK</button>
-    <button onclick="saveCatches()">SAVE</button>
+    <div>
+        <button onclick="startfishing()">Start fishing</button>
+        <button onclick="stopFishing()">Stop fishing</button>
+        <button onclick="openBank()">OPEN BANK</button>
+        <button onclick="test()">TEST</button>
+    </div>
 
     <script src="./utils.js"></script>
     <script src="./items.js"></script>
     <script src="./global.js"></script>
-    <script src="./fish-picker.js"></script>
+    <script src="./save/save.local-storage.js"></script>
     <script src="./save/save.js"></script>
+    <script src="./fish-picker.js"></script>
+    <script src="./zones/zones.js"></script>
     <script src="./player.js"></script>
     <script src="./bank/bank.js"></script>
     <script src="./bank/bank.render.js"></script>
+    <script src="./main.js"></script>
 
 </body>
 

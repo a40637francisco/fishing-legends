@@ -10,13 +10,21 @@ const ITEM_CATEGORY = {
  *  id: number;
  *  canStack: boolean;
  *  name: string;
- *  category: ITEM_CATEGORY: ENUM
+ *  category: ITEM_CATEGORY: ENUM;
+ *  xp: number;
  * }
  */
 const items = [
-    { id: 1, name: 'Tuna', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH },
-    { id: 2, name: 'Salmon', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH },
-    { id: 3, name: 'Lobster', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH },
+    // Fish
+    { id: 1, name: 'Tuna', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, xp: 5 },
+    { id: 2, name: 'Salmon', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, xp: 10 },
+    { id: 3, name: 'Crab', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, xp: 15 },
+    { id: 4, name: 'Lobster', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, xp: 25 },
+
+    //Equipment
+    { id: 4, name: 'Net', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT },
+    { id: 5, name: 'Wood fishing pole', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT },
+
     { id: 99, name: 'Chest', canStack: false, maxStack: 1, category: ITEM_CATEGORY.TREASURE },
 ]
 

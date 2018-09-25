@@ -1,7 +1,4 @@
-const bank = [
-    { id: 1, quantity: 200 },
-    { id: 2, quantity: 100 },
-    { id: 3, quantity: 40 },
+let bank = [
 ]
 
 
@@ -22,7 +19,7 @@ function addToBank(item) {
     const itemTemplate = getItemById(item.id)
     if (itemTemplate.canStack) {
         let itemStacks = bank.filter(b => b.id === item.id)
-        if (!itemStacks.length) {
+        if (itemStacks.length > 0) {
             addToStack(itemStacks, item, itemTemplate)
             return;
         }

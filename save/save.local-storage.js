@@ -1,10 +1,10 @@
 
 
-function saveToLocalStorage(values) {
-    localStorage.setItem('fishing-legends__values', JSON.stringify(values));
+function saveToLocalStorage(key, values) {
+    localStorage.setItem(key, JSON.stringify(values))
 }
 
-function loadFromLocalStorage() {
-    let values = localStorage.getItem('fishing-legends__values');
-    console.log('values: ', JSON.parse(values));
+function loadFromLocalStorage(key) {
+    let values = localStorage.getItem(key)
+    return JSON.parse(values)
 }

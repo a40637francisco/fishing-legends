@@ -28,5 +28,9 @@ function renderBank() {
 }
 
 function renderBankItem(item, itemTemplate) {
-    return `<span class="bank__items-slot">${itemTemplate.name} - ${item.quantity}</span>`
+    return `
+    <div class="bank__items-slot">
+        ${itemTemplate.name}
+        ${item.quantity ? `<div>${item.quantity}</div>` : ''}
+    </div>`
 }
