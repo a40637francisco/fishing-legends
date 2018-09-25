@@ -22,8 +22,11 @@ const items = [
     { id: 4, name: 'Lobster', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, xp: 25 },
 
     //Equipment
-    { id: 4, name: 'Net', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT },
+    { id: 4, name: 'Net', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT,  },
     { id: 5, name: 'Wood fishing pole', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT },
+
+    //Sigils
+    { id: 6, name: 'Bolt', canStack: false, maxStack: 1, category: ITEM_CATEGORY.SIGILS },
 
     { id: 99, name: 'Chest', canStack: false, maxStack: 1, category: ITEM_CATEGORY.TREASURE },
 ]

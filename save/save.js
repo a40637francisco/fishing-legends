@@ -20,9 +20,10 @@ function stopSaveLoop() {
     savingInterval = null
 }
 
-function loadAll() {
+function loadAll(cb = () => { }) {
     loadValues('fishing-legends__bank', (values) => bank = values || [])
     loadValues('fishing-legends__player', (values) => player = values || player)
+    cb()
 }
 
 function saveAll() {

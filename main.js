@@ -1,5 +1,8 @@
 
-loadAll()
+loadAll(() => {
+    inititalPlayerConfig()
+    isLoading = false
+})
 
 saveLoop()
 
@@ -15,6 +18,11 @@ function stopFishing() {
     stopFishingLoop()
 }
 
-function test() {
-    console.log(bank)
+function clearAll() {
+    player.fishingXP = 0;
+    player.fishingLevel = 1;
+    player.fishingXPToNextLevel = 0;
+    bank = []
+    saveBank()
+    savePlayer()
 }

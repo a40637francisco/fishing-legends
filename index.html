@@ -11,12 +11,18 @@
 </head>
 
 <body>
-    <h1>Nothing</h1> <span id="Didn`t catch"></span>
-    <h1>Lobster</h1> <span id="Lobster"></span>
-    <h1>Salmon</h1> <span id="Salmon"></span>
-    <h1>Tuna</h1> <span id="Tuna"></span>
-    <h1>Chest</h1> <span id="Chest"></span>
-
+    <div>
+        <h1>Nothing</h1> <span id="Didn`t catch"></span>
+        <h1>Lobster</h1> <span id="Lobster"></span>
+        <h1>Salmon</h1> <span id="Salmon"></span>
+        <h1>Tuna</h1> <span id="Tuna"></span>
+        <h1>Chest</h1> <span id="Chest"></span>
+    </div>
+    <div>
+        <span>Fishing level:</span>
+        <span id="fishing-level__current"></span>
+        <span>/ 99</span>
+    </div>
     <div class="bank">
         <div class="bank__wrapper">
             <div class="bank__close" onclick="closeBank()">X</div>
@@ -28,7 +34,7 @@
         <button onclick="startfishing()">Start fishing</button>
         <button onclick="stopFishing()">Stop fishing</button>
         <button onclick="openBank()">OPEN BANK</button>
-        <button onclick="test()">TEST</button>
+        <button onclick="clearAll()">CLEAR BANK | PLAYER </button>
     </div>
 
     <script src="./utils.js"></script>
