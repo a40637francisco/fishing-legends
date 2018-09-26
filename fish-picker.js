@@ -6,7 +6,11 @@ var catches = {}
 
 function startFishingLoop(zone, cb = () => { }) {
 
-    const catchSpeed = zone.catchSpeed; // calcular
+    // CATCH SPEED
+    debugger
+    let catchSpeed = zone.catchSpeed;
+    catchSpeed /= playerCalcCatchSpeedMultiplier()
+
     let possibleCatches = zone.fishes;
 
     // SET MISS CHANCE
@@ -14,7 +18,7 @@ function startFishingLoop(zone, cb = () => { }) {
     possibleCatches.push({ id: -1, name: 'Didn`t catch', chance: missChance })
 
     // SET TREASURE CHANCE
-    possibleCatches = possibleCatches.concat(zone.treasures)
+    possibleCatches = possibleCatches.concat(zone.treasures) // also get multipliers from player equipment
 
     fishingInterval = setInterval(() => {
         if (Object.keys(blockFishing).length === 0) {

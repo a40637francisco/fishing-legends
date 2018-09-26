@@ -1,16 +1,39 @@
+
 let player = {
     fishingXP: 0,
     fishingLevel: 1,
     fishingXPToNextLevel: 0,
     equipment: {
-        id: 4,
+        id: 5,
         sigils: [
             {
-                id: 6
+                id: 8
             }
         ]
-    }
+    },
 }
+
+
+function playerCalcCatchSpeedMultiplier() {
+    let multiplier = 1
+
+    // FROM EQUIPMENT
+    const item = getItemById(player.equipment.id)
+    multiplier += item.attributes ? item.attributes.catchSpeed || 0 : 0
+
+    // FROM SIGILS
+    multiplier += calcCatchSpeedMultiplerFromSigils(player.equipment.sigils || [])
+    return multiplier
+}
+
+function calcCatchSpeedMultiplerFromSigils(sigils) {
+    return sigils
+        .map(s => getItemById(s.id))
+        .filter(s => s.attributes.catchSpeed)
+        .map(s => s.attributes.catchSpeed)
+        .reduce((s1, s2) => s1 + s2)
+}
+
 
 // REMOVE FROM HERE!!!
 function renderFishingXP() {

@@ -18,10 +18,19 @@ function stopFishing() {
     stopFishingLoop()
 }
 
+function restartFishingLoop() {
+    stopFishing()
+    startfishing()
+}
+
 function clearAll() {
     player.fishingXP = 0;
     player.fishingLevel = 1;
     player.fishingXPToNextLevel = 0;
+    player.equipment = {
+        id: 7,
+        sigils: [{ id: 8 }]
+    }
     bank = []
     saveBank()
     savePlayer()
