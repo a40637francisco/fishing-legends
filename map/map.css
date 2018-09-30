@@ -1,0 +1,27 @@
+.map {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    min-width: 50%;
+    min-height: 20%;
+    display: none;
+    background: white;
+}
+
+.map--open {
+    display: block;
+}
+
+.map__wrapper {
+    position: relative;
+}
+
+.map__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    border: 1px solid black;
+}
