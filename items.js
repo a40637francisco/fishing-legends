@@ -1,8 +1,8 @@
 const ITEM_CATEGORY = {
-    FISH: 'Fish',
-    EQUIPMENT: 'Equipment',
-    SIGILS: 'Sigil',
-    TREASURE: 'Treasure',
+  FISH: 'Fish',
+  EQUIPMENT: 'Equipment',
+  SIGILS: 'Sigil',
+  TREASURE: 'Treasure',
 }
 
 /**
@@ -23,24 +23,24 @@ const ITEM_CATEGORY = {
  * }
  */
 const items = [
-    // Fish
-    { id: 1, name: 'Tuna', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, xp: 5 },
-    { id: 2, name: 'Salmon', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, xp: 10 },
-    { id: 3, name: 'Crab', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, xp: 15 },
-    { id: 4, name: 'Lobster', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, xp: 25 },
+  // Fish
+  { id: 1, name: 'Tuna', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, fishType: 1, xp: 5 },
+  { id: 2, name: 'Salmon', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, fishType: 1, xp: 10 },
+  { id: 3, name: 'Crab', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, fishType: 2, xp: 15 },
+  { id: 4, name: 'Lobster', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, fishType: 3, xp: 25 },
 
-    //Equipment
-    { id: 5, name: 'Net', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT, },
-    { id: 6, name: 'Wood fishing pole', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT },
-    { id: 7, name: 'Super net', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT, attributes: { catchSpeed: .5 } },
+  //Equipment
+  { id: 5, name: 'Net', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT, fishType: [1] },
+  { id: 6, name: 'Wood fishing pole', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT, fishType: [1] },
+  { id: 7, name: 'Super net', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT, fishType: [1], attributes: { catchSpeed: .5 } },
 
-    //Sigils
-    { id: 8, name: 'Bolt', canStack: false, maxStack: 1, category: ITEM_CATEGORY.SIGILS, attributes: { catchSpeed: 1 } },
+  //Sigils
+  { id: 8, name: 'Bolt', canStack: false, maxStack: 1, category: ITEM_CATEGORY.SIGILS, attributes: { catchSpeed: 1 } },
 
-    { id: 99, name: 'Chest', canStack: false, maxStack: 1, category: ITEM_CATEGORY.TREASURE },
+  { id: 99, name: 'Chest', canStack: false, maxStack: 1, category: ITEM_CATEGORY.TREASURE },
 ]
 
 function getItemById(id) {
-    const hits = items.filter(item => item.id === id)
-    return hits.length > 0 ? hits[0] : null
+  const hits = items.filter(item => item.id === id)
+  return hits.length > 0 ? hits[0] : null
 }

@@ -13,6 +13,10 @@ let player = {
     },
 }
 
+function playerCanCatchFish(fishCatchType) {
+  const item = getItemById(player.equipment.id)
+  return item.fishType.includes(fishCatchType)
+}
 
 function playerCalcCatchSpeedMultiplier() {
     let multiplier = 1

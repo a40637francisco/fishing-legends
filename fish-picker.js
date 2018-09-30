@@ -4,55 +4,69 @@ let fishingInterval = null
 
 var catches = {}
 
+
 function startFishingLoop(zone, cb = () => { }) {
 
-    // CATCH SPEED
-    debugger
-    let catchSpeed = zone.catchSpeed;
-    catchSpeed /= playerCalcCatchSpeedMultiplier()
+  // CATCH SPEED
+  let catchSpeed = zone.catchSpeed
+  catchSpeed /= playerCalcCatchSpeedMultiplier()
 
-    let possibleCatches = zone.fishes;
+  let possibleCatches = zone.fishes
 
-    // SET MISS CHANCE
-    const missChance = zone.missChance || 1 // also get multipliers from player equipment
-    possibleCatches.push({ id: -1, name: 'Didn`t catch', chance: missChance })
+  // MAP TO FISH ITEMS
+  possibleCatches = possibleCatches.map(f => {
+    let i = getItemById(f.id)
+    return { ...f, ...i }
+  })
 
-    // SET TREASURE CHANCE
-    possibleCatches = possibleCatches.concat(zone.treasures) // also get multipliers from player equipment
+  // FILTER BY EQUIPMENT CATCH_TYPE
+  possibleCatches = possibleCatches.filter(_catch => playerCanCatchFish(_catch.fishType))
+  if(possibleCatches.length === 0 ) {
+    return alert('Equipment and zone catchTypes do not match')
+  }
 
-    fishingInterval = setInterval(() => {
-        if (Object.keys(blockFishing).length === 0) {
-            const fish = getfish(possibleCatches)
-            const fishItem = getItemById(fish.id)
+  // SET MISS CHANCE
+  const missChance = zone.missChance || 1 // also get multipliers from player equipment
+  const MISS_CATCH = { id: -1, name: 'Didn`t catch', chance: missChance }
+  possibleCatches.push(MISS_CATCH)
 
-            if (!fishItem) {
-                catches[fish.id] = catches[fish.id] ? catches[fish.id] + 1 : 1
-                document.getElementById('Didn`t catch').innerHTML = catches[fish.id]
-            } else {
-                catches[fish.id] = catches[fish.id] ? catches[fish.id] + 1 : 1
-                cb(fishItem)
-                document.getElementById(fishItem.name).innerHTML = catches[fish.id]
-            }
-        }
-    }, catchSpeed)
+  // SET TREASURE CHANCE
+  possibleCatches = possibleCatches.concat(zone.treasures.map(t => {
+    const i = getItemById(t.id)
+    return { ...t, ...i }
+  })) // also get multipliers from player equipment
+
+  fishingInterval = setInterval(() => {
+    if (Object.keys(blockFishing).length === 0) {
+      const fishItem = getfish(possibleCatches)
+      if (!fishItem || fishItem.id === -1) {
+        catches[-1] = catches[-1] ? catches[-1] + 1 : 1
+        document.getElementById('Didn`t catch').innerHTML = catches[-1]
+      } else {
+        catches[fishItem.id] = catches[fishItem.id] ? catches[fishItem.id] + 1 : 1
+        cb(fishItem)
+        document.getElementById(fishItem.name).innerHTML = catches[fishItem.id]
+      }
+    }
+  }, catchSpeed)
 }
 
 function stopFishingLoop() {
-    clearInterval(fishingInterval)
-    fishingInterval = null
+  clearInterval(fishingInterval)
+  fishingInterval = null
 }
 
 function getfish(fishes) {
-    let total = 0;
-    for (let i = 0; i < fishes.length; ++i) {
-        total += fishes[i].chance;
+  let total = 0
+  for (let i = 0; i < fishes.length; ++i) {
+    total += fishes[i].chance
+  }
+  let rand = Math.random() * total
+  for (let i = 0; i < fishes.length; i++) {
+    let fish = fishes[i]
+    if (rand < fish.chance) {
+      return fish
     }
-    let rand = Math.random() * total;
-    for (let i = 0; i < fishes.length; i++) {
-        let fish = fishes[i];
-        if (rand < fish.chance) {
-            return fish;
-        }
-        rand -= fish.chance;
-    }
+    rand -= fish.chance
+  }
 }
