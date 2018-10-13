@@ -8,8 +8,6 @@ const TUTORIAL_ISLAND_AREA = {
     ]
 }   
 
-Falta as zones, ver no que dá
-
 function addTutorialIslandArea(region) {
     const area = { ...TUTORIAL_ISLAND_AREA }
     area.render = () => tutorialIslandAreaRender()

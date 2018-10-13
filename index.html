@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="stylesheet" type="text/css" href="./css/global.css">
     <link rel="stylesheet" type="text/css" href="./bank/bank.css">
     <link rel="stylesheet" type="text/css" href="./map/map.css">
+    <link rel="stylesheet" type="text/css" href="./equipment/equipment.css">
     <title>Fishing legends</title>
 </head>
 
@@ -37,18 +39,32 @@
             <div class="map__items"></div>
         </div>
     </div>
+    <div class="equipment">
+        <div class="equipment__sigils">
+            <div class="equipment__sigils-slot"></div>
+            <div class="equipment__sigils-slot"></div>
+            <div class="equipment__sigils-slot"></div>
+            <div class="equipment__sigils-slot"></div>
+        </div>
+        <div class="equipment__display">
+            <canvas id="equipment__display-canvas"></canvas>
+        </div>
+    </div>
     <div>
         <button onclick="startfishing()">Start fishing</button>
         <button onclick="stopFishing()">Stop fishing</button>
         <button onclick="openBank()">OPEN BANK</button>
         <button onclick="clearAll()">CLEAR BANK | PLAYER </button>
         <button onclick="openMap()">OPEN MAP</button>
+        <button onclick="renderNet()">RENDER ITEM</button>
     </div>
 
     <script src="./utils.js"></script>
-    <script src="./items.js"></script>
+    <script src="./items/items.js"></script>
+    <script src="./items/items.render.js"></script>
     <script src="./global.js"></script>
     <script src="./equipment/equipment.js"></script>
+    <script src="./equipment/equipment.render.js"></script>
     <script src="./save/save.local-storage.js"></script>
     <script src="./save/save.js"></script>
     <script src="./fish-picker.js"></script>
@@ -60,6 +76,9 @@
     <script src="./map/map.render.js"></script>
     <script src="./main.js"></script>
 
+    <div id="preload">
+        <img src="./items/net.png" width="1" height="1" alt="net" />
+     </div>
 </body>
 
 </html>

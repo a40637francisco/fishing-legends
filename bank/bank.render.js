@@ -32,5 +32,15 @@ function renderBankItem(item, itemTemplate) {
     <div class="bank__items-slot">
         ${itemTemplate.name}
         ${item.quantity ? `<div>${item.quantity}</div>` : ''}
+        ${renderBankItemTooltip(itemTemplate)}
     </div>`
+}
+
+function renderBankItemTooltip(item) {
+    return `
+        <div class="bank__items-slot-tooltip">
+            <span>${item.name}</span>
+            <span>${item.category}</span>
+        </div>
+    `
 }

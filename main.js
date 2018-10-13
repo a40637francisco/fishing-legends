@@ -28,10 +28,16 @@ function clearAll() {
     player.fishingLevel = 1;
     player.fishingXPToNextLevel = 0;
     player.equipment = {
-        id: 7,
+        id: 5,
         sigils: [{ id: 8 }]
     }
-    bank = []
+    bank = [
+        { id: 5, quantity: 1 }
+    ]
     saveBank()
     savePlayer()
+}
+
+function renderNet() {
+    drawEquipment(player.equipment.id)
 }
