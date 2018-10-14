@@ -16,6 +16,7 @@ function addMultipleItemsToBank(items) {
  *   }
  */
 function addToBank(item) {
+    //debugger im losing the quipmet sigils!!
     const itemTemplate = getItemById(item.id)
     if (itemTemplate.canStack) {
         let itemStacks = bank.filter(b => b.id === item.id)
@@ -28,6 +29,10 @@ function addToBank(item) {
     return true
 }
 
+function removeFromBank(item, index, quantity) {
+    bank = bank.filter((bankItem, i) => i !== index)
+}
+
 function addToStack(itemStacks, item, itemTemplate) {
     for (let i = 0; i < itemStacks.length; i++) {
         const currentQuantity = itemStacks[i].quantity
@@ -36,4 +41,24 @@ function addToStack(itemStacks, item, itemTemplate) {
         return true;
     }
     return false
+}
+
+function equipEquipmentFromBank(index) {
+    const bankItem = bank[index]
+    const item = getItemById(bankItem.id)
+    removeFromBank(item, index, 1)
+    equipEquipment(bankItem)
+    saveAll()
+    renderBank()
+    renderEquipment()
+}
+
+function equipSigilFromBank(index) {
+    const bankItem = bank[index]
+    const item = getItemById(bankItem.id)
+    removeFromBank(item, index, 1)
+    addSigil(item)
+    saveAll()
+    renderBank()
+    renderEquipment()
 }

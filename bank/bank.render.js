@@ -19,28 +19,40 @@ function renderBank() {
     clearChilds(bankItemsElem)
 
     bankItemsElem.insertAdjacentHTML('beforeend',
-        bank.map(item => {
+        bank.map((item, index) => {
             const itemTemplate = getItemById(item.id)
-            return renderBankItem(item, itemTemplate)
+            return renderBankItem(item, itemTemplate, index)
         }).join('')
     )
 
 }
 
-function renderBankItem(item, itemTemplate) {
+function renderBankItem(item, itemTemplate, index) {
     return `
     <div class="bank__items-slot">
         ${itemTemplate.name}
         ${item.quantity ? `<div>${item.quantity}</div>` : ''}
-        ${renderBankItemTooltip(itemTemplate)}
+        ${renderBankItemTooltip(itemTemplate, index)}
     </div>`
 }
 
-function renderBankItemTooltip(item) {
+function renderBankItemTooltip(item, index) {
     return `
         <div class="bank__items-slot-tooltip">
             <span>${item.name}</span>
             <span>${item.category}</span>
+            ${equipableEquipmentRender(item, index)}
         </div>
     `
+}
+
+
+function equipableEquipmentRender(item, index) {
+    if(item.category === ITEM_CATEGORY.EQUIPMENT) {
+        return `<button onclick="equipEquipmentFromBank(${index})">Equip</button>`
+    }
+    if(item.category === ITEM_CATEGORY.SIGILS) {
+        return `<button onclick="equipSigilFromBank(${index})">Equip</button>`
+    }
+    return ''
 }

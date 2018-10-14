@@ -30,13 +30,15 @@ const items = [
   { id: 4, name: 'Lobster', canStack: true, maxStack: 999, category: ITEM_CATEGORY.FISH, fishType: 3, xp: 25 },
 
   //Equipment
-  { id: 5, name: 'Net', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT, fishType: [1] },
-  { id: 6, name: 'Wood fishing pole', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT, fishType: [1] },
-  { id: 7, name: 'Super net', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT, fishType: [1], attributes: { catchSpeed: .5 } },
+  { id: 5, name: 'Net', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT, maxSigils: 2, fishType: [1] },
+  { id: 6, name: 'Wood fishing pole', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT, maxSigils: 2, fishType: [1] },
+  { id: 7, name: 'Super net', canStack: false, maxStack: 1, category: ITEM_CATEGORY.EQUIPMENT, fishType: [1], maxSigils: 4, attributes: { catchSpeed: .5 } },
 
   //Sigils
   { id: 8, name: 'Bolt', canStack: false, maxStack: 1, category: ITEM_CATEGORY.SIGILS, attributes: { catchSpeed: 1 } },
+  { id: 9, name: 'Feather', canStack: false, maxStack: 1, category: ITEM_CATEGORY.SIGILS, attributes: { catchSpeed: 2 } },
 
+  // TREASURE
   { id: 99, name: 'Chest', canStack: false, maxStack: 1, category: ITEM_CATEGORY.TREASURE },
 ]
 
