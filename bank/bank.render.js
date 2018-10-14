@@ -10,7 +10,7 @@ function closeBank() {
     bankElem.classList.remove('bank--open')
 }
 
-function renderBank() {
+function renderBank() { // mudar bank render com open bank ? 
 
     const bankElem = document.getElementsByClassName('bank')[0]
     bankElem.classList.add('bank--open')
@@ -45,7 +45,6 @@ function renderBankItemTooltip(item, index) {
         </div>
     `
 }
-
 
 function equipableEquipmentRender(item, index) {
     if(item.category === ITEM_CATEGORY.EQUIPMENT) {

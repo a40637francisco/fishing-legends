@@ -37,20 +37,19 @@
     padding: 15px;
     border: 1px solid black;
     position: relative;
-
 }
 
 .bank__items-slot:hover > .bank__items-slot-tooltip{
-    display: block;
-    top: -10px;
-    left: -10px;
-    padding: 10px;
-    z-index: 3;
-    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    display: block;  
 }
 
 .bank__items-slot-tooltip {
     display: none;
     background: white;
     position: absolute;
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    top: -10px;
+    left: -10px;
+    padding: 10px;
+    z-index: 3;
 }

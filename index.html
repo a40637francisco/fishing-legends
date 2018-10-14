@@ -41,10 +41,22 @@
     </div>
     <div class="equipment">
         <div class="equipment__sigils">
-            <div class="equipment__sigils-slot"><canvas id="equipment__sigil-canvas--0"></canvas></div>
-            <div class="equipment__sigils-slot"><canvas id="equipment__sigil-canvas--1"></canvas></div>
-            <div class="equipment__sigils-slot"><canvas id="equipment__sigil-canvas--2"></canvas></div>
-            <div class="equipment__sigils-slot"><canvas id="equipment__sigil-canvas--3"></canvas></div>
+            <div class="equipment__sigils-slot">
+                <div class="equipment__sigils-tooltip" id="equipment__sigil-tooltip--0"></div>
+                <canvas class="equipment__sigil-canvas" id="equipment__sigil-canvas--0"></canvas>
+            </div>
+            <div class="equipment__sigils-slot">
+                <div class="equipment__sigils-tooltip" id="equipment__sigil-tooltip--1"></div>
+                <canvas class="equipment__sigil-canvas" id="equipment__sigil-canvas--1"></canvas>
+            </div>
+            <div class="equipment__sigils-slot">
+                <div class="equipment__sigils-tooltip" id="equipment__sigil-tooltip--2"></div>
+                <canvas class="equipment__sigil-canvas" id="equipment__sigil-canvas--2"></canvas>
+            </div>
+            <div class="equipment__sigils-slot">
+                <div class="equipment__sigils-tooltip" id="equipment__sigil-tooltip--3"></div>
+                <canvas class="equipment__sigil-canvas" id="equipment__sigil-canvas--3"></canvas>
+            </div>
         </div>
         <div class="equipment__display">
             <canvas id="equipment__display-canvas"></canvas>
@@ -56,7 +68,6 @@
         <button onclick="openBank()">OPEN BANK</button>
         <button onclick="clearAll()">CLEAR BANK | PLAYER </button>
         <button onclick="openMap()">OPEN MAP</button>
-        <button onclick="renderNet()">RENDER ITEM</button>
         <button onclick="showLogs()">LOGS</button>
     </div>
 

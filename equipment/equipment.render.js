@@ -40,15 +40,28 @@ function renderSigil(sigil, index, blocked) {
     const ctx = sigilsCtx[index]
     ctx.clearRect(0, 0, SIGIL_WIDTH, SIGIL_HEIGHT)
     ctx.font = "14px Arial"
+
+    const sigiltooltip = document.getElementById(`equipment__sigil-tooltip--${index}`)
+
     if (blocked) {
         ctx.fillText('Block', SIGIL_WIDTH / 2, SIGIL_HEIGHT / 2)
+        sigiltooltip.classList.remove('equipment__sigil-tooltip--show')
         return
     }
     if (sigil) {
         ctx.fillText(getItemById(sigil.id).name, SIGIL_WIDTH / 2, SIGIL_HEIGHT / 2)
+        sigiltooltip.classList.add('equipment__sigil-tooltip--show')
+        sigiltooltip.innerHTML = renderSigilTooltip(index)
     } else {
         ctx.fillText('Empty', SIGIL_WIDTH / 2, SIGIL_HEIGHT / 2)
+        sigiltooltip.classList.remove('equipment__sigil-tooltip--show')
     }
+}
+
+function renderSigilTooltip(index) {
+    return `
+        <button onclick="removeSigil(${index})">remove</button> 
+    `
 }
 
 function drawImage(equipmentId) {
@@ -65,7 +78,6 @@ function drawText(equipmentId) {
     equipmentCtx.font = "30px Arial"
     equipmentCtx.fillText(item.name, EQUIPMENT_WIDTH / 2, EQUIPMENT_HEIGHT / 2)
 }
-
 
 function setSigilsContext() {
     sigilsCtx = []

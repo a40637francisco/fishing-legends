@@ -16,7 +16,6 @@ function addMultipleItemsToBank(items) {
  *   }
  */
 function addToBank(item) {
-    //debugger im losing the quipmet sigils!!
     const itemTemplate = getItemById(item.id)
     if (itemTemplate.canStack) {
         let itemStacks = bank.filter(b => b.id === item.id)
